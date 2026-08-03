@@ -2,7 +2,7 @@ package DSA_LoveBabbar.Collection_Framework;
 
 import java.util.*;
 
-public class Basics{
+public class Part_1 {
 
    public  static void main(String[] args) {
 
@@ -90,7 +90,7 @@ public class Basics{
 
 //       And stack with its respective method by using
 //       Stack<Integer> st = new Stack<>();
-       
+
 //       Deque is faster than Stack, stack is slow so in modern java we use deque because it's act both queue and stack so most of the people prefer deque to get better performance...
     }
 }
