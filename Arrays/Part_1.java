@@ -1,5 +1,7 @@
 package DSA_LoveBabbar.Arrays;
 
+import java.util.Arrays;
+
 public class Part_1 {
 
     // FIND THE AVERAGE OF ARRAY ELEMENTS
@@ -124,24 +126,41 @@ public class Part_1 {
     //  PRINT ARRAY INTERSECTION ELEMENTS
 
     static int[] intersectionElements(int[] arr1, int[] arr2){
-         int size = arr1.length;
-         int[] newArray = new int[size];
+
+         int[] newArray = new int[Math.min(arr1.length, arr2.length)];
+         int k=0;
 
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
                 if (arr1[i] == arr2[j]){
-                    newArray[i] = arr1[i] ;
+                    newArray[k++] = arr1[i] ;
                 }
 
             }
 
 
         }
-        return newArray;
+        return Arrays.copyOf(newArray,k);
 
     }
 
     //  PRINT ALTERNATE EXTREME ELEMENTS OF AN ARRAY
+
+    static void printAlternateExtremeElements(int[] arr){
+        int i=0;
+        int j=arr.length-1;
+
+        while( i <= j){
+            System.out.print(arr[i]+" ");
+
+            if(i != j){
+                System.out.print(arr[j]+" ");
+            }
+            i++;
+            j--;
+        }
+
+    }
 
     static void main() {
 
@@ -184,13 +203,16 @@ public class Part_1 {
 //            System.out.print(i+" ");
 //        }
 
-        int[] arr1 = {1,2,3,4,5};
-        int[] arr2 = {2,4,6,8,10};
-        int[] ans = intersectionElements(arr1,arr2);
-        System.out.print("Intersection elements are: ");
-        for(int i : ans){
-            System.out.print(i+" ");
-        }
+//        int[] arr1 = {1,2,3,4,5};
+//        int[] arr2 = {2,4,6,8,10,7,1};
+//        int[] ans = intersectionElements(arr1,arr2);
+//        System.out.print("Intersection elements are: ");
+//        for(int i : ans){
+//            System.out.print(i+" ");
+//        }
+
+        int[] arr = {1,2,3,4,5,6};
+        printAlternateExtremeElements(arr);
 
 
 
