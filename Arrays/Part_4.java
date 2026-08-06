@@ -117,6 +117,32 @@ public class Part_4 {
         return -1;
     }
 
+    //  MISSING ELEMENTS FROM AN ARRAY WITH DUPLICATES (Where all the numbers are from 1 to n { +ve } number)
+
+    static List<Integer> findMissingElementFromAnArray(int[] arr){
+        List<Integer> ans = new ArrayList<>();
+
+        int n = arr.length;
+    // loop use kar liya mark karne ke liye
+        for(int i = 0; i < n; i++){
+            int value = Math.abs(arr[i]);
+            int position = value-1;
+
+            if(arr[position] > 0){
+                arr[position] = -arr[position];
+            }
+        }
+        // aur saare positive numbers print kar diye
+        for(int i = 0; i < n; i++){
+            if(arr[i] > 0){
+                int valueAtThisIndex = i+1;
+                ans.add(valueAtThisIndex);
+            }
+        }
+        return ans;
+
+    }
+
     static void main() {
 //
 //        int[] arr = {2,7,11,15};
@@ -137,9 +163,13 @@ public class Part_4 {
 //        int ans = findFirstRepeatingElement(arr);
 //        System.out.print("First repeating element is: "+ans);
 
-        int[] arr = { 1,3,7,6,5,6};
-        int ans = pivotIndex(arr);
-        System.out.print("Pivot index is: "+ans);
+//        int[] arr = { 1,3,7,6,5,6};
+//        int ans = pivotIndex(arr);
+//        System.out.print("Pivot index is: "+ans);
+
+        int[] arr = {1,4,4,5,5,2};
+        List<Integer> ans = findMissingElementFromAnArray(arr);
+        System.out.println(ans);
 
     }
 }
