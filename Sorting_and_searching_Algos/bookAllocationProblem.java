@@ -34,6 +34,8 @@ Constraints:
 
 */
 
+    // If you see the statement like Minimum of maximum or Maximum of minimum then it uses binary search
+
     static boolean isValidAnswer(int[] arr,int k,long maxPages){
 
         int studentCount = 1;

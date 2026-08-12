@@ -14,9 +14,11 @@ Examples:
 Input: arr[] = [20, 15, 10, 17], m = 7
 Output: 15
 Explanation: At h = 15, tree1 gives 20-15 = 5 metres, tree4 gives 17-15 = 2 metres, and the other two trees give 0 (they're shorter than 15). Total wood = 5 + 2 = 7, which meets m. Setting h any higher, say 16, only gives 5 + 1 = 6 metres, which falls short of m.
+
 Input: arr[] = [4, 42, 40, 26, 46], m = 20
 Output: 36
 Explanation: At h = 36, the trees taller than 36 give 42-36 = 6, 40-36 = 4, and 46-36 = 10 metres respectively. Total wood = 6 + 4 + 10 = 20, which exactly meets m.
+
 Constraints:
 1 ≤ arr.size() ≤ 106
 1 ≤ arr[i] ≤ 106
@@ -46,14 +48,22 @@ Constraints:
 
         long n = trees.length;
         long s = 0;
+        long e = 0;
         long maxi = -1;
-        long sum = 0;
 
-        for( int i = 0; i < n; i++){
-            sum += trees[i];
+
+//        For maximum height of a tree
+        for( int height : trees){
+            e = Math.max(e,height);
         }
 
-        long e = sum;
+//        long sum = 0;
+//        for( int i = 0; i < n; i++){
+//            sum += trees[i];
+//        }
+//        long e = sum;
+
+
 
         while( s <= e){
 
