@@ -147,11 +147,13 @@ Print the modified string.
      */
 
     static String replaceAllOccOfStrWithSpace(String str, String sub){
-        str =  str.replaceAll(sub," ");
-        str = str.trim();
-        return str;
+        return   str.replaceAll(sub," ");
+
+
 
     }
+
+
 
     static void main() {
 
@@ -170,6 +172,8 @@ Print the modified string.
         String str = "XYZAXYZBXYZC";
         String result = replaceAllOccOfStrWithSpace(str,"XYZ");
         System.out.print("String after replacing all occurrence of sub with space: "+result);
+
+
 
     }
 }
