@@ -62,9 +62,10 @@ public class Part_2 {
 
 //         METHODS -> add(), addAll(), iterator(), remove(), removeAll(), retainAll(), clear(), size(), contains(), containsAll(), toArray(), hashCode()
 
-//         HashSet -> O(1) {Random order of elements};
-//         LinkedHashSet -> O(n) {Order of elements are maintained};
-//         TreeSet -> O(logn) {Elements are arranged in sort order};
+//         HashSet -> O(1) Average {Random order of elements};
+//         LinkedHashSet -> O(1) Average {Order of elements are maintained};
+//         TreeSet -> O(log n) {Elements are arranged in sort order};
+
 
          Set<Integer> set1 = new HashSet<>();
          Set<Integer> set2 = new HashSet<>();

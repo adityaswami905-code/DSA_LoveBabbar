@@ -4,6 +4,26 @@ import java.util.Scanner;
 
 public class bitExamples {
 
+    /*
+
+BIT MANIPULATION CHEAT SHEET
+
+| Task                     | Trick                         |
+| ------------------------ | ----------------------------- |
+| Check even               | `(n & 1) == 0`                |
+| Check odd                | `(n & 1) != 0`                |
+| Multiply by 2            | `n << 1`                      |
+| Divide by 2              | `n >> 1`                      |
+| Remove rightmost set bit | `n & (n - 1)`                 |
+| Get rightmost set bit    | `n & (-n)`                    |
+| Power of 2               | `n > 0 && (n & (n - 1)) == 0` |
+| Duplicate cancellation   | `a ^ a = 0`                   |
+| XOR with zero            | `a ^ 0 = a`                   |
+| Unique element           | XOR all elements              |
+
+
+     */
+
     public static void main(String[] args) {
 
 
