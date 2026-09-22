@@ -113,6 +113,11 @@ public class doublyLinkedList {
     // printing forward
     public void printList(){
 
+        if( head == null ){
+            System.out.println("LL is empty, cannot print anything!");
+            return;
+        }
+
         Node temp = head;
 
         while ( temp != null){
@@ -134,10 +139,166 @@ public class doublyLinkedList {
         System.out.println();
     }
 
+    //  SEARCHING
+
+    public boolean searchInLL(int target){
+
+        if(head == null){
+            System.out.print("LL is empty, i.e. no node is present!");
+            return false;
+        }
+
+        Node temp = head;
+
+        while( temp != null){
+
+            if( temp.data == target){
+                return true;
+            }
+            else{
+                temp = temp.next;
+            }
+        }
+
+        return false;
+    }
+
+    // Updation in LL
+
+    public void updateInLL(int oldValue, int newValue){
+
+       // -> HOMEWORK
+    }
+
+    // DELETION
+
+    // Deletion at head
+    public void deleteHead(){
+
+        if( head == null ){
+            System.out.println("No node to delete!");
+            return;
+        }
+
+        if( head == tail){
+            // i.e. only single node is present
+            head = null;
+            tail = null;
+            size = 0;
+            return;
+        }
+
+        // If LL has more than one node
+        head = head.next;
+        head.previous = null;
+
+        // size updation
+        size--;
+    }
+
+    // Deletion at tail
+    public void deleteTail(){
+
+        if( head == null){
+            System.out.println("LL is empty, cannot delete anything!");
+            return;
+        }
+
+        if( head == tail){
+            head = null;
+            tail = null;
+            size = 0;
+             return;
+        }
+
+        Node preNode = tail.previous;
+        Node currNode = tail;
+
+        // links modification
+        preNode.next = null;
+        currNode.previous = null;
+        // update tail
+        tail = preNode;
+
+        // size updation
+        size--;
+    }
+
+    // deletion at position
+    public void deleteAtPosition(int position){
+
+        if ( position < 1 || position > size ){
+            System.out.println("Invalid LL, cannot do anything!");
+            return;
+        }
+
+        if( position == 1 ){
+            deleteHead();
+            return;
+        }
+
+        if( position == size){
+            deleteTail();
+            return;
+        }
+
+        Node currNode = head;
+
+        for( int i = 1; i <= position-1; i++){
+            currNode = currNode.next;
+        }
+
+        // abhi us node par hain jise delete karna hai
+        Node  preNode = currNode.previous;
+        Node nextNode = currNode.next;
+
+        // change links
+        preNode.next = nextNode;
+        nextNode.previous = preNode;
+        currNode.next = null;
+        currNode.previous = null;
+
+        // size updation
+        size--;
+    }
+
     static void main() {
 
         doublyLinkedList myList = new doublyLinkedList();
 
+        myList.insertAtHead(10);
+        myList.printList();
+
+        myList.insertAtHead(20);
+        myList.printList();
+
+        myList.insertAtHead(30);
+        myList.printList();
+
+        myList.insertAtTail(11);
+        myList.printList();
+
+        myList.insertAtTail(12);
+        myList.printList();
+
+        myList.insertAtTail(13);
+        myList.printList();
+
+        myList.insertAtPosition(4,3);
+        myList.printList();
+
+        myList.printBackward();
+
+        System.out.println("Element present: "+ myList.searchInLL(18));
+
+        myList.deleteHead();
+        myList.printList();
+
+        myList.deleteTail();
+        myList.printList();
+
+        myList.deleteAtPosition(3);
+        myList.printList();
 
     }
 }
