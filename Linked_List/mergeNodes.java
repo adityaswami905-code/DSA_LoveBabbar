@@ -52,7 +52,7 @@ The beginning and end of the linked list have Node.val == 0.
 
         ListNode read = head.next;
         ListNode write = head;
-        // Now just think by declaring two variable above it means LL must contains at least 2 nodes, is it true?
+        // Now just think by declaring two variable above it means LL must contains at least 2 nodes, Does the LL with size 2 is valid?
         // The answer is YES, because the question itself says that the given LL starts and end with zero(0)
 
         while( read != null ){
