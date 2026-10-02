@@ -1,4 +1,4 @@
-package DSA_LoveBabbar;
+package DSA_LoveBabbar.Linked_List;
 
 public class addOneTOLL {
 
