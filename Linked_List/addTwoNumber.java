@@ -44,6 +44,8 @@ public class addTwoNumber {
             newTail.next = newNode;
             newTail = newNode;
 
+            //
+
         }
         newHead = newHead.next;
 
