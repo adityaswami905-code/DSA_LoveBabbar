@@ -195,7 +195,7 @@ MakeMyTrip  Walmart GoldmanSachs Adobe SAPLabs
         int k1 = 3;
         Node newHead1 = obj.llReverseGroup(head1, k);
 
-        System.out.print(" LL after reversing the nodes in "+k+" groups(GFG) : ");
+        System.out.print(" LL after reversing the nodes in "+k+" groups (GFG) : ");
 
         while( newHead1 != null ){
 
