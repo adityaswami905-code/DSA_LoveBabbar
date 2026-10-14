@@ -2,7 +2,7 @@ package DSA_LoveBabbar.Linked_List;
 
 public class reverseNodesInKGroup {
 
-    //  REVERSE NODES IN K GROUP
+    //  REVERSE NODES IN K GROUP ( Leet code )
 
     /*
 
@@ -83,9 +83,86 @@ The number of nodes in the list is n.
         return prev;
     }
 
+    //  LINKED LISTS GROUP REVERSE ( GFG )
+
+    /*
+
+    Given a Singly linked list, reverse every k node in the linked list and return the head of the modified list. If the node count is not a multiple of k then the left-out nodes at the end, should be considered as a group and must be reversed.
+
+Examples:
+
+Input: head: 1 -> 2 -> 3 -> 4 -> 5 -> 6, k = 2
+
+Output: 2 -> 1 -> 4 -> 3 -> 6 -> 5
+Explanation: Linked List is reversed in a group of size k = 2.
+
+Input: head: 1 -> 2 -> 3 -> 4 -> 5 -> 6, k = 4,
+
+Output: 4 -> 3 -> 2 -> 1 -> 6 -> 5
+Explanation: Linked List is reversed in a group of size k = 4.
+
+Constraints:
+1 ≤ size of linked list ≤ 105
+0 ≤ node.data ≤ 106
+1 ≤ k ≤ head.size()
+
+Expected Complexities
+Time Complexity: O(n)
+Auxiliary Space: O(1)
+
+Company Tags
+Paytm   VMWare  Accolite    Amazon  Microsoft   Snapdeal    Hike
+MakeMyTrip  Walmart GoldmanSachs Adobe SAPLabs
+
+     */
+
+    static class Node{
+
+        int data;
+        Node next;
+
+        Node(int data){
+
+            this.data = data;
+            this.next = null;
+
+        }
+    }
+
+    static Node llReverseGroup(Node head, int k){
+
+        if( head == null || k <= 1 ){
+            return head;
+        }
+
+        Node prev = null;
+        Node curr = head;
+        int count = 0;
+
+        while( curr != null && count < k ){
+
+            Node forward = curr.next;
+
+            curr.next = prev;
+
+            prev = curr;
+            curr = forward;
+
+            count++;
+        }
+
+        Node recursionKeAnsKaHead = llReverseGroup(curr, k);
+
+        head.next = recursionKeAnsKaHead;
+
+        return prev;
+    }
+
     static void main() {
 
         reverseNodesInKGroup obj = new reverseNodesInKGroup();
+
+//        ******************* LeetCode ***************
 
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
@@ -104,6 +181,28 @@ The number of nodes in the list is n.
                     newHead.val + " -> "
             );
             newHead = newHead.next;
+        }
+        System.out.println("Null");
+
+//        ****************** GFG ***************
+
+        Node head1 = new Node(1);
+        head1.next = new Node(2);
+        head1.next.next = new Node(3);
+        head1.next.next.next = new Node(4);
+        head1.next.next.next.next = new Node(5);
+
+        int k1 = 3;
+        Node newHead1 = obj.llReverseGroup(head1, k);
+
+        System.out.print(" LL after reversing the nodes in "+k+" groups(GFG) : ");
+
+        while( newHead1 != null ){
+
+            System.out.print(
+                    newHead1.data + " -> "
+            );
+            newHead1 = newHead1.next;
         }
         System.out.println("Null");
     }
