@@ -54,7 +54,10 @@ Node.random is null or is pointing to some node in the linked list.
         }
     }
 
-    // Remember this pattern: Interleave copies → copy random pointers → separate both lists.
+    // Remember this pattern:
+    // Interleave copies →
+    //                    copy random pointers →
+    //                                          separate both lists.
     static Node copyRandomList(Node head){
 
         // if LL is empty
@@ -82,6 +85,7 @@ Node.random is null or is pointing to some node in the linked list.
             Node oldNode = temp;
             Node cloneNode = temp.next;
 
+            // TO avoid null pointer exception
             if( oldNode.random != null ){
                 cloneNode.random = oldNode.random.next;
             }
@@ -99,6 +103,7 @@ Node.random is null or is pointing to some node in the linked list.
             Node cloneNode = temp.next;
 
             oldNode.next = cloneNode.next;
+            // TO avoid null pointer exception
             if( cloneNode.next != null ){
                 cloneNode.next = cloneNode.next.next;
             }
