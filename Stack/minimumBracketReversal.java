@@ -82,11 +82,61 @@ Amazon
         }
     }
 
+    // The above approach is by using stack
+    // i.e. it's T.C. = O(n) and S.C. = O(n)
+
+    // But if we are pushing the same element or value into the stack
+    // Then, their is the optimal approach which takes S.C. = O(1) and T.C. = O(n)
+    // So, we can track unmatched opening and closing brackets using a simple counter approach in O(n) time and O(1) space
+    // That can be observed in below approach
+
+    static int countMinReversals2(String s){
+
+        if( s.length() % 2 == 1 ){
+            return -1;
+        }
+
+        int open = 0;
+        int close = 0;
+
+        for( char ch : s.toCharArray() ){
+
+            if( ch == '{' ){
+                open++;
+
+            }
+            else{
+
+                if( open > 0 ){
+                    open--;
+
+                }
+                else{
+                    close++;
+                }
+            }
+        }
+
+        if( open % 2 == 0 ){
+            return (open/2) + (close/2);
+
+        }
+        else{
+            return (open-1)/2 + 2 + (close-1)/2;
+        }
+    }
+
     static void main() {
 
-        String s = "{{}{{{}{{}}{{";
+        String s = "}{{}}{{{";
         int ans = countMinReversals(s);
+        int ans2 = countMinReversals2(s);
         System.out.println(
                 "Minimum count of reversal required for the given string is: " + ans );
+
+        System.out.println(
+                "Minimum count of reversal required for the given string is: " + ans2
+        );
     }
+
 }
