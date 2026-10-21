@@ -71,12 +71,61 @@ s[i] is either '(' or ')'.
         return finalAns;
     }
 
+    // The above approach is by using stack
+    // i.e. it's T.C. = O(n) and S.C. = O(n)
+
+    // But if we are pushing the same element or value into the stack
+    // Then, their is the optimal approach which takes S.C. = O(1) and T.C. = O(n)
+    // So, we can track unmatched opening and closing brackets using a simple counter approach in O(n) time and O(1) space
+    // That can be observed in below approach
+
+    static int minAddToMakeValid2(String s){
+
+        // Counter for opening brackets required
+        int openReq = 0;
+
+        // Counter for closing brackets required
+        int closeReq = 0;
+
+        for( char ch : s.toCharArray() ){
+
+            // for opening brackets
+            if( ch == '(' ){
+                openReq++;
+
+            }
+            else{
+                // i.e. ch == ')'
+
+                // Check if their exist any opening brackets to cancel out with respective closing brackets
+                if( openReq > 0 ){
+                    openReq--;
+
+                }
+                else{
+                    // if not present then
+                    closeReq++;
+                }
+            }
+        }
+
+        int finalAns = openReq + closeReq;
+        return finalAns;
+
+    }
+
     static void main() {
 
-        String s = "(((";
+        String s = "(()(";
         int ans = minAddToMakeValid(s);
+        int ans2 = minAddToMakeValid2(s);
+
         System.out.println(
                 "The minimum number of moves required to make string valid: " + ans
+        );
+
+        System.out.println(
+                "The minimum number of moves required to make string valid: " + ans2 + " (with optimal approach)"
         );
     }
 }
