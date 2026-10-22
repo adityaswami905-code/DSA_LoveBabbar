@@ -77,13 +77,81 @@ s[i] is '(', or ')'.
         return maxLen;
     }
 
+    // after space optimization
+    // this question can be solve in O(1) space complexity and O(n) time complexity
+    // whereas above approach using stack takes T.C. = O(n) and S.C. = O(n)
+    // but optimized approach can be seen as below approach;
+
+    static int longestValidParenthesesLen2(String s){
+
+        int open = 0;
+        int close = 0;
+        int maxLen = 0;
+
+        // i.e. from left to right traversal on string
+        for( int i = 0; i < s.length(); i++){
+
+            char ch = s.charAt(i);
+
+            if( ch == '(' ){
+                open++;
+            }
+            else{
+                close++;
+            }
+            // check valid or invalid case
+            if( close > open ){
+
+                // i.e. invalid case then reset it
+                open = 0;
+                close = 0;
+            }
+            else if( open == close ){
+
+                maxLen = Math.max(maxLen, 2*close);
+            }
+        }
+
+        open = 0;
+        close = 0;
+
+        // right to left traversal on string
+        for( int i = s.length() - 1; i  > 0; i-- ){
+
+            char ch = s.charAt(i);
+
+            if( ch == '(' ){
+                open++;
+            }
+            else{
+                close++;
+            }
+
+            if( open > close ){
+                // invalid case reset it
+                open++;
+                close++;
+            }
+            else if( open == close){
+
+                maxLen = Math.max(maxLen,2*open);
+            }
+        }
+        return maxLen;
+    }
+
     static void main() {
 
-        String s = "";
+        String s = "(()";
         int ans = longestValidParenthesesLen(s);
+        int ans2 = longestValidParenthesesLen2(s);
 
         System.out.println(
                 "Longest valid Parentheses Length is: " + ans
+        );
+
+        System.out.println(
+                "Longest valid Parentheses Length is: " + ans2 + "(second approach)"
         );
     }
 }
