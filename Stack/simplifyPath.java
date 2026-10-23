@@ -82,13 +82,16 @@ path is a valid absolute Unix path.
             }
 
             if( part.equals("..") && st.isEmpty() ){
+                // ignore
                 continue;
             }
 
             if( part.equals("..") && !st.isEmpty() ){
+                // previous directory
                 st.pop();
             }
             else{
+                // file name
                 st.push(part);
             }
         }
