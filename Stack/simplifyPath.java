@@ -109,7 +109,7 @@ path is a valid absolute Unix path.
                 str.append(st.removeLast());
 
             }
-            // also if we used .reverse() method then output string also gets reversed due to which (we can handle that issue, but now we decided to, not to use it)
+            // also if we used .reverse() method then output characters also gets reversed due to which (we can handle that issue, but now we decided to, not to use it)
             // here .reverse() is not used because in above while loop we used .removeLast() method
             //The removeLast() method simply takes away and returns the very last item at the back of a line (deque).
             //Think of it like taking the last person out of a moving line:
