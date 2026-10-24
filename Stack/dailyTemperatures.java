@@ -1,5 +1,8 @@
 package DSA_LoveBabbar.Stack;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class dailyTemperatures {
 
     //  DAILY TEMPERATURES
@@ -26,6 +29,8 @@ Constraints:
 
      */
 
+    // Brute force approach
+    // T.C. = O(n^2) and S.C. = O(1)
     static int[] dailyTemp(int[] temperatures){
 
         int n = temperatures.length;
@@ -49,9 +54,38 @@ Constraints:
         return ans;
     }
 
+    // Optimize approach i.e. using stack
+   // Monotonic Decreasing Stack (Optimal)
+   // Use a stack to store the indices of days that are still waiting for a warmer temperature.
+   // Traverse the array once from left to right:
+   // While the stack is not empty and the current day's temperature is greater than
+   // the temperature at the index stored at the top of the stack, pop that index.
+   // The difference between the current index and the popped index is the number of days waited.
+   // Push the current index onto the stack.
+   // Complexity: Time O(n) and Space O(n), because each index is pushed and popped at most once.
+    static int[] dailTemp2(int[] temperatures){
+
+        int n = temperatures.length;
+        int[] ans = new int[n];
+
+        Deque<Integer> st = new ArrayDeque<>();
+
+        for( int i = 0; i < n; i++ ){
+
+            while(!st.isEmpty() && temperatures[i] > temperatures[st.peek()]){
+
+                int previousDay = st.pop();
+                ans[previousDay] = i - previousDay;
+            }
+            st.push(i);
+        }
+
+        return ans;
+    }
+
     static void main() {
 
-        int[] temperatures = {30,60,90};
+        int[] temperatures = {73,74,75,71,69,72,76,73};
         int[] output = dailyTemp(temperatures);
         System.out.print(
                 "Number of days to wait a respective warmer day: "
@@ -60,5 +94,13 @@ Constraints:
             System.out.print(out + " ");
         }
         System.out.println();
+
+        System.out.print(
+                "Number of days to wait a respective warmer day: "
+        );
+        for( int out : output ){
+            System.out.print(out + " ");
+        }
+        System.out.println("(Second approach)");
     }
 }
