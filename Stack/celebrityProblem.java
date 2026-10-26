@@ -83,7 +83,7 @@ Fab.com   One97   United-Health-Group   NPCI
             }
         }
 
-        // hence we will get our potential answer(i.e. celebrity)
+        // hence we got our potential answer(i.e. celebrity)
         // so checking whether it follows its quality
         // that, celebrity does not know anyone, but everyone knows celebrity
         int celebIndex = st.pop();
