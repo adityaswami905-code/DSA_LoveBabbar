@@ -75,9 +75,13 @@ At most 5000 calls will be made to visit, back, and forward.
         // In visit we are visiting particular website and clearing forwardHistory
         currHistory.push(url);
 
-        while( !forwardHistory.isEmpty() ){
-            forwardHistory.pop();
-        }
+//        while( !forwardHistory.isEmpty() ){
+//            forwardHistory.pop();
+//        }
+
+        // As the above loop takes O(n) Space at worst case
+        // can optimize to O(1) as below
+        forwardHistory = new ArrayDeque<>();
     }
 
     public String back(int steps){
