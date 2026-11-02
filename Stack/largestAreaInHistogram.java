@@ -145,7 +145,7 @@ Microsoft   Google  NPCI
         int[] heights = {2,4};
         int ans = largestRectangleArea(heights);
         System.out.println(
-                "Largest Rectangle Area In Histogram: " + ans +" Units"
+                "Largest Rectangle Area In Histogram: " + ans +" sq.unit"
         );
     }
 }
