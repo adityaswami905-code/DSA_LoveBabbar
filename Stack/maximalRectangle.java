@@ -12,7 +12,12 @@ public class maximalRectangle {
     Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
 
 Example 1:
-Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+Input: matrix = [
+                ["1","0","1","0","0"],
+                ["1","0","1","1","1"],
+                ["1","1","1","1","1"],
+                ["1","0","0","1","0"]
+                ]
 Output: 6
 Explanation: The maximal rectangle is shown in the above picture.
 
@@ -61,7 +66,7 @@ matrix[i][j] is '0' or '1'.
     }
 
     // logic behind finding Next Smaller Index
-    static int findNextSmallerIndex(int[] heights, int[] next){
+    static void findNextSmallerIndex(int[] heights, int[] next){
 
         int n = heights.length;
         // Using stack due to monotonic stack pattern
@@ -116,12 +121,12 @@ matrix[i][j] is '0' or '1'.
         int cols = matrix[0].length;
 
         // i.e. if we get invalid rows and cols
-        if( matrix.length == 0 || matrix[0].length == 0 ){
+        if( rows == 0 || cols == 0 ){
             return 0;
         }
 
         // Evaluating given 2D matrix using 1D array approach
-        int[] heights = new int[rows];
+        int[] heights = new int[cols];
 
         // initially maximum area 0 i.e. not -1 because if we found height and width is zero then area 0 is valid one
         int maxArea = 0;
@@ -152,10 +157,18 @@ matrix[i][j] is '0' or '1'.
 
     static void main() {
 
-        char[][] matrix = {};
+//        char[][] matrix = {
+//                {'1','0','1','0','0'},
+//                {'1','0','1','1','1'},
+//                {'1','1','1','1','1'},
+//                {'1','1','1','1','0'}
+//        };
+        char[][] matrix = {
+                            {'1'},
+                    };
         int ans = maximalRecArea(matrix);
         System.out.println(
-                "Maximal Rectangle area: " + ans + "sq.unit"
+                "Maximal Rectangle area: " + ans + " sq.unit"
         );
     }
 }
